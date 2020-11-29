@@ -24,7 +24,7 @@ const getUserWithEmail = function(email) {
   return pool.query(queryString, [email])
     .then(res => res.rows[0]);
 
-}
+};
 exports.getUserWithEmail = getUserWithEmail;
 
 /**
@@ -39,7 +39,7 @@ const getUserWithId = function(id) {
   return pool.query(queryString, [id])
     .then(res => res.rows[0]);
 
-}
+};
 exports.getUserWithId = getUserWithId;
 
 
@@ -61,7 +61,7 @@ const addUser =  function(user) {
   return pool.query(queryString, values)
     .then(res => res.rows[0]);
 
-}
+};
 exports.addUser = addUser;
 
 /// Reservations
@@ -90,7 +90,7 @@ const getAllReservations = function(guest_id, limit = 10) {
   return pool.query(queryString, values)
     .then(res => res.rows);
 
-}
+};
 exports.getAllReservations = getAllReservations;
 
 /// Properties
@@ -155,14 +155,14 @@ const getAllProperties = function(options, limit = 10) {
     GROUP BY properties.id
     ORDER BY cost_per_night
     LIMIT $${queryParams.length};
-    `;  
+    `;
   
   console.log(queryString, queryParams);
 
   return pool.query(queryString, queryParams)
-  .then(res => res.rows);
+    .then(res => res.rows);
 
-}
+};
 exports.getAllProperties = getAllProperties;
 
 
@@ -176,5 +176,5 @@ const addProperty = function(property) {
   property.id = propertyId;
   properties[propertyId] = property;
   return Promise.resolve(property);
-}
+};
 exports.addProperty = addProperty;
